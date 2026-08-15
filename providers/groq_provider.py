@@ -13,7 +13,7 @@ class GroqProvider:
         self.model = "llama-3.3-70b-versatile"
 
     def ask(self, messages, tools=None):
-
+        
         request = {
             "model": self.model,
             "messages": messages,
