@@ -5,7 +5,7 @@ import subprocess
 ALLOWED_APPS = {
     "firefox": ["firefox"],
     "terminal": ["qterminal"],
-    "calculator": ["galculator"],
+    "calculator": ["mate-calc"],
 }
 
 
