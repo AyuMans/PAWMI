@@ -1,4 +1,5 @@
 import platform
+import os
 
 
 def get_system_info():
@@ -7,5 +8,6 @@ def get_system_info():
         "release": platform.release(),
         "version": platform.version(),
         "machine": platform.machine(),
-        "processor": platform.processor()
+        "processor": platform.processor(),
+        "cpu_cores": os.cpu_count()
     }

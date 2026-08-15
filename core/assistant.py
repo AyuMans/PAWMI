@@ -4,6 +4,8 @@ from core.api_manager import APIManager
 from core.tool_manager import ToolManager
 from config.personality import SYSTEM_PROMPT
 from plugins.system_info import get_system_info
+from plugins.datetime_tool import get_datetime
+from plugins.app_launcher import open_application
 
 
 class Assistant:
@@ -17,6 +19,15 @@ class Assistant:
             "get_system_info",
             get_system_info
         )
+        
+        self.tool_manager.register(
+            "get_datetime",
+            get_datetime)
+        
+        self.tool_manager.register(
+            "open_application",
+            open_application
+            )
 
         self.tools = [
             {
@@ -30,7 +41,36 @@ class Assistant:
                         "required": []
                     }
                 }
-            }
+            },
+            {
+                "type": "function",
+                "function": {
+                    "name": "get_datetime",
+                    "description": "Gets the current date, time, and day from the computer.",
+                    "parameters": {
+                        "type": "object",
+                        "properties": {},
+                        "required": []
+                        }
+                    }
+                },
+            {
+                "type": "function",
+                "function": {
+                    "name": "open_application",
+                    "description": "Opens an allowed application on the computer.",
+                    "parameters": {
+                        "type": "object",
+                        "properties": {
+                            "application": {
+                                "type": "string",
+                                "description": "The name of the application to open, such as firefox, terminal, or calculator."
+                                }
+                            },
+                        "required": ["application"]
+                        }
+                    }
+                }
         ]
 
         self.conversation = [
