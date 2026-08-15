@@ -4,7 +4,7 @@ from dotenv import load_dotenv
 
 def main():
     load_dotenv()
-    print("PAWMI ONLIiNE")
+    print("PAWMI ONLINE")
     
     assistant = Assistant()
     while True:
