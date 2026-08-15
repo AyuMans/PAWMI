@@ -3,3 +3,4 @@ python-dotenv
 httpx
 groq
 tavily-python
+openai

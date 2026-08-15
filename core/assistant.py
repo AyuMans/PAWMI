@@ -79,7 +79,12 @@ class Assistant:
                 "type": "function",
                 "function": {
                     "name": "web_search",
-                    "description": "Searches the internet for current or up-to-date information.",
+                    "description": (
+                                "Searches the internet for current information. "
+                                "Use this tool whenever the user asks about current, "
+                                "recent, latest, trending, live, or up-to-date information, "
+                                "including current YouTube trending videos."
+                            ),
                     "parameters": {
                         "type": "object",
                         "properties": {
@@ -197,7 +202,9 @@ class Assistant:
         self.conversation[-tool_count:] = [
             assistant_message
         ] + self.conversation[-tool_count:]
-    
+        
+        
+
         # Ask the AI to interpret the tool result
         final_response = self.api_manager.ask(
             self.conversation,

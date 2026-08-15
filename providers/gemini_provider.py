@@ -20,6 +20,7 @@ class GeminiProvider:
         self.last_response_content = None
 
     def ask(self, messages, tools=None):
+        
 
         system_instruction = None
         gemini_messages = []
