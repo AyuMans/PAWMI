@@ -2,3 +2,4 @@ google-genai
 python-dotenv
 httpx
 groq
+tavily-python

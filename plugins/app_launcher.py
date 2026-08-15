@@ -8,10 +8,21 @@ ALLOWED_APPS = {
     "calculator": ["mate-calc"],
 }
 
+APP_ALIASES = {
+    "browser": "firefox",
+    "web browser": "firefox",
+    "internet browser": "firefox",
+
+    "command line": "terminal",
+    "command prompt": "terminal",
+    "shell": "terminal",
+
+    "calc": "calculator",
+}
 
 def open_application(application):
     application = application.lower().strip()
-
+    application = APP_ALIASES.get(application, application)
     if application not in ALLOWED_APPS:
         return {
             "success": False,
