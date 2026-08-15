@@ -6,6 +6,7 @@ from config.personality import SYSTEM_PROMPT
 from plugins.system_info import get_system_info
 from plugins.datetime_tool import get_datetime
 from plugins.app_launcher import open_application
+from plugins.web_search import web_search
 
 
 class Assistant:
@@ -28,6 +29,9 @@ class Assistant:
             "open_application",
             open_application
             )
+        self.tool_manager.register(
+            "web_search",
+            web_search)
 
         self.tools = [
             {
@@ -70,7 +74,24 @@ class Assistant:
                         "required": ["application"]
                         }
                     }
+                },
+            {
+                "type": "function",
+                "function": {
+                    "name": "web_search",
+                    "description": "Searches the internet for current or up-to-date information.",
+                    "parameters": {
+                        "type": "object",
+                        "properties": {
+                            "query": {
+                                "type": "string",
+                                "description": "The search query to use."
+                            }
+                        },
+                        "required": ["query"]
+                    }
                 }
+            }
         ]
 
         self.conversation = [
